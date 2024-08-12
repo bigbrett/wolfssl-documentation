@@ -1520,7 +1520,11 @@ This extension allows debugging callbacks through the use of signals in an envir
 
 #### WOLF_CRYPTO_CB
 
- Enable crypto callback support. This feature is also enabled automatically when [`--enable-cryptocb`](#enable-cryptocb) is used.
+Enable crypto callback support. This feature is also enabled automatically when [`--enable-cryptocb`](#enable-cryptocb) is used.
+
+#### WC_TEST_NO_CRYPTOCB_SW_TEST
+
+Disables internal testing of crypto callback functionality using software crypto when running wolfCrypt tests. This is useful when intending to use wolfCrypt tests with a custom crypto callback (e.g. by setting `WC_USE_DEVID`) where it is not desired to also test the crypto callback infrastructure with a software-only crypto callback implementation. This feature is also enabled via the [`--disable-cryptocb-sw-test`](#disable-cryptocb-sw-test) configure option.
 
 #### WOLFSSL_DYN_CERT
 
@@ -3049,6 +3053,10 @@ The following two defines can be used with `--enable-cryptocb` to complie out RS
 * WOLF_CRYPTO_CB_ONLY_ECC - compiles out ECC software crypto fallback
 
 Use of the WOLF_CRYPTO_CB_ONLY_* options requires disabling the examples. See [`--disable-examples`](#disable-examples)
+
+### `--disable-cryptocb-sw-test`
+
+Disables internal testing of crypto callback functionality using software crypto when running wolfCrypt tests. This is useful when intending to use wolfCrypt tests with a custom crypto callback (e.g. by setting `WC_USE_DEVID`) where it is not desired to also test the crypto callback infrastructure with a software-only crypto callback implementation. This feature is also enabled via the [`WC_TEST_NO_CRYPTOCB_SW_TEST`](#WC_TEST_NO_CRYPTOCB_SW_TEST") preprocessor macro.
 
 ### `--enable-reproducible-build`
 
